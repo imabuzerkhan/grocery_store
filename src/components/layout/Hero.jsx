@@ -1,13 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
 import Right from '../Right'
-const Hero = () => {
+export default function Hero() {
   return (
-   <>
-   <div className="mai-div flex item-center ">
-    <div className="content">
-      <h1>
-    Everything<br />
+    <section className="hero md:mt-8 grid grid-cols-1 md:grid-cols-2 ">
+      <div className="py-8 md:py-12">
+        <h1 className="text-4xl font-semibold">
+          Everything<br />
           is better<br />
           with a&nbsp;
           <span className="text-primary">
@@ -27,13 +26,10 @@ const Hero = () => {
             <Right />
           </button>
         </div>
-    </div>
-    <div className="relative hidden md:block">
-        <Image src='/pizza.png' layout={'fill'} objectFit={'contain'} alt={'pizza'} />
       </div>
-   </div>
-   </>
-  )
+      <div className="relative hidden md:block">
+        <Image src={'/pizza.png'} layout={'fill'} objectFit={'contain'} alt={'pizza'} />
+      </div>
+    </section>
+  );
 }
-
-export default Hero
