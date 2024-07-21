@@ -1,41 +1,37 @@
-"use client"
+import Business from "@/_components/Business";
+import CategoryList from "@/_components/CategoryList";
+import Hero from "@/_components/Hero";
+import GlobalApi from "@/_service/GlobalApi";
+import { useEffect, useState } from "react";
 
-
-import Business from "@/_components/Business"
-import CategoryList from "@/_components/CategoryList"
-import Hero from "@/_components/Hero"
-import GlobalApi from "@/_service/GlobalApi"
-import { useEffect, useState } from "react"
 const Home = () => {
+  const [categorylist, setCategoryList] = useState([]);
+  const [businesslist, setBusinessList] = useState([]);
 
-const [categorylist , setcategorylist] = useState([])
-const [businesslist , setbusinesslist] = useState([])
+  useEffect(() => {
+    getCategoryList();
+    getBusinessList();
+  }, []);
 
-  useEffect( ()=>{
-getCategoryList();
-BusinessListAll();
-  },[])
+  const getCategoryList = () => {
+    GlobalApi.getCategory().then((res) => {
+      setCategoryList(res.categories);
+    });
+  };
 
-  const getCategoryList=()=>{
-    GlobalApi.getCategory().then(res =>{
-      setcategorylist(res.categories)
-    } )
-  }
-
-  const BusinessListAll=()=>{
-    GlobalApi.getCategory().then(res =>{
-      setbusinesslist(res.businessLists)
-    } )
-  }
-
+  const getBusinessList = () => {
+    GlobalApi.getAllbusinesslist().then((res) => {
+      setBusinessList(res.businesslists);
+    });
+  };
 
   return (
     <>
-  <Hero/>
-  <CategoryList  CategoryList={categorylist} />
-  <Business      Businesslist ={businesslist} title={"Popular Business "}          />
+      <Hero />
+      <CategoryList CategoryList={categorylist} />
+      <Business businesslists={businesslist} title="Popular Business" />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

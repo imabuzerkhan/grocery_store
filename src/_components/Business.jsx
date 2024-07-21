@@ -1,20 +1,23 @@
-import React from 'react'
+import Image from 'next/image';
+import React from 'react';
 
-const Business = ({Businesslist , title }) => {
+const Business = ({ businesslists, title }) => {
   return (
     <div>
       <h1>{title}</h1>
-      {
-        Businesslist.map((item , index)=>{
-          <div key={index} >
-<h2>{item.name}</h2>
-
-
-          </div>
-        })
-      }
+      {businesslists.map((item, index) => (
+        <div key={index}>
+          <Image
+            src={item?.image?.url}
+            alt="business image"
+            width={500}
+            height={200}
+          />
+          <p>{item.name}</p> 
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Business
+export default Business;
