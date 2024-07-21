@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Business = ({Businesslist}) => {
+const Business = ({Businesslist , title }) => {
   return (
     <div>
+      <h1>{title}</h1>
       {
         Businesslist.map((item , index)=>{
           <div key={index} >

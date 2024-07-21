@@ -24,7 +24,7 @@ BusinessListAll();
 
   const BusinessListAll=()=>{
     GlobalApi.getCategory().then(res =>{
-      setbusinesslist(res)
+      setbusinesslist(res.businessLists)
     } )
   }
 
@@ -33,7 +33,7 @@ BusinessListAll();
     <>
   <Hero/>
   <CategoryList  CategoryList={categorylist} />
-  <Business      Businesslist ={businesslist}             />
+  <Business      Businesslist ={businesslist} title={"Popular Business "}          />
     </>
   )
 }
