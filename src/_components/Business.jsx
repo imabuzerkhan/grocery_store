@@ -8,7 +8,7 @@ const Business = ({ businesslists, title }) => {
       {businesslists.map((item, index) => (
         <div key={index}>
           <Image
-            src={item?.image?.url}
+            src={item?.image[0].url}
             alt="business image"
             width={500}
             height={200}

@@ -1,3 +1,7 @@
+"use client"
+
+
+
 import Business from "@/_components/Business";
 import CategoryList from "@/_components/CategoryList";
 import Hero from "@/_components/Hero";
