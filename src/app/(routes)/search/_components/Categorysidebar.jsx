@@ -30,7 +30,7 @@ const Categorysidebar = () => {
       <h2 className='font-bold mb-3 text-lg  ' >Categories</h2>
       {
         categorylist.map((item , index)=>(
-<Link href={'/search/'+ category.name}  ><div key={index} className='flex items-center  px-2 py-2 gap-2  md:gap-10 rounded-lg border mb-3 cursor-pointer hover:bg-purple-50 hover:text-purple-600 hover:border-purple-400 ' >
+<Link href={'/search/'+ item.name}  ><div key={index} className='flex items-center  px-2 py-2 gap-2  md:gap-10 rounded-lg border mb-3 cursor-pointer hover:bg-purple-50 hover:text-purple-600 hover:border-purple-400 ' >
 <Image
             src={item.categoryimage.url}
             alt='icon'
