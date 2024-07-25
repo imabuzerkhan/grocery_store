@@ -31,7 +31,9 @@ const Home = () => {
 
   return (
     <>
+      
       <Hero />
+    
       <CategoryList CategoryList={categorylist} />
       <Business businesslists={businesslist} title="Popular Business" />
     </>
