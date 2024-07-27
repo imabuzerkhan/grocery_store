@@ -2,11 +2,14 @@
 
 
 
+import Banner from "@/_components/Banner";
 import Business from "@/_components/Business";
 import CategoryList from "@/_components/CategoryList";
 import Hero from "@/_components/Hero";
 import GlobalApi from "@/_service/GlobalApi";
 import { useEffect, useState } from "react";
+
+
 
 const Home = () => {
   const [categorylist, setCategoryList] = useState([]);
@@ -31,7 +34,7 @@ const Home = () => {
 
   return (
     <>
-      
+     <Banner/>
       <Hero />
     
       <CategoryList CategoryList={categorylist} />
