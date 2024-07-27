@@ -4,8 +4,17 @@
 import React, { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import { signIn, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
 const Header = () => {
 
 const {data} = useSession();
@@ -35,14 +44,29 @@ console.log(data)
      <div className="button">
       {
         data?.user?
-        <Image
+       
+        <DropdownMenu>
+  <DropdownMenuTrigger>
+  <Image
         src={data?.user?.image}
         alt='user'
         width={40}
         height={40}
         className='rounded-full'
         
-        />:   <Button  onClick={()=>signIn('descope')} >Login/ Sing Up</Button>
+        />
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>My Booking</DropdownMenuItem>
+    <DropdownMenuItem onClick={()=>signOut()}>Logout</DropdownMenuItem>
+    
+  </DropdownMenuContent>
+</DropdownMenu>
+
+        
+        :   <Button  onClick={()=>signIn('descope')} >Login/ Sing Up</Button>
       }
      
       </div>
