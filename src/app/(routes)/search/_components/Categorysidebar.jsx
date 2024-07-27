@@ -25,7 +25,7 @@ const Categorysidebar = () => {
 
 
   return (
-    <div>
+    <div className="mx-6 md:mx-16" >
       
       <h2 className='font-bold mb-3 text-lg  ' >Categories</h2>
       {
