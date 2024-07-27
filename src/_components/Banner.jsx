@@ -25,7 +25,7 @@ const SliderBanner = () => {
               height={600}
             />
           </div>
-          <div className="relative top-1/2 z-10 text-center text-white">
+          <div className="relative top-1/2  z-10 text-center text-white">
             <h1 className="text-4xl font-bold mb-2">Cleaning Services</h1>
             <p className="text-xl">Your trusted partner in cleanliness</p>
           </div>

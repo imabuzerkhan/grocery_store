@@ -1,18 +1,19 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Business = ({ businesslists, title }) => {
   return (
     <div className='my-5 mx-6 md:mx-16 ' >
       <h1 className='font-bold text-[22px] ' >{title}</h1>
-      <div className='grid grid-cols-2 md:grid-col-4 lg:grid-cols-5 ls-4  gap-3 mt-5 ' >
+       <div className='grid grid-cols-2 md:grid-col-4  ls-4  gap-6 mt-5 ' >
       {businesslists.map((item, index) => (
-        <div key={index} className='shadow-md rounded-lg w-[270px] ' >
+    <Link href={'/Deatils/'+ item.id} >   <div key={index} className='shadow-md rounded-lg w-[270px] ' >
           <Image
             src={item?.image[0].url}
             alt="business image"
-            width={300}
+            width={400}
             height={200}
             className='h-[150px] md:h-[200px] object-cover rounded-lg '
           />
@@ -25,8 +26,10 @@ const Business = ({ businesslists, title }) => {
           </div>
        
         </div>
+        </Link> 
       ))}
       </div>
+      
     </div>
   );
 };
