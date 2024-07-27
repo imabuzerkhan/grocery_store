@@ -8,6 +8,8 @@ const SliderBanner = () => {
     dots: true,
     infinite: true,
     speed: 500,
+    autoplay:true,
+    autoplaySpeed:1000,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
@@ -32,10 +34,12 @@ const SliderBanner = () => {
         </div>
         <div className="relative flex justify-center items-center h-[600px]">
           <div className="absolute inset-0 overflow-hidden">
-            <img
+          <Image
               className="w-full h-full object-cover brightness-50"
-              src="/images/banner2.jpg"
+              src="/banner2.avif"
               alt="Banner 2"
+              width={1200}
+              height={600}
             />
           </div>
           <div className="relative z-10 text-center text-white">
@@ -45,10 +49,12 @@ const SliderBanner = () => {
         </div>
         <div className="relative flex justify-center items-center h-[600px]">
           <div className="absolute inset-0 overflow-hidden">
-            <img
+          <Image
               className="w-full h-full object-cover brightness-50"
-              src="/images/banner3.jpg"
-              alt="Banner 3"
+              src="/banner3.avif"
+              alt="Banner 2"
+              width={1200}
+              height={600}
             />
           </div>
           <div className="relative z-10 text-center text-white">

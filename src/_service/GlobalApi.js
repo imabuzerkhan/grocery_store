@@ -76,11 +76,35 @@ return result;
 
 }
 
-
+const businessDeatils = async (id)=>{
+  const query = gql `
+  
+  query getbusinessbyid {
+  businesslist(where: {id: "`+id+`"}) {
+    about
+    address
+    category {
+      name
+    }
+    contactPerson
+    gmail
+    id
+    name
+    image {
+      url
+    }
+  }
+}
+  
+  `
+  const result = await request(Master_url, query);
+return result;
+}
 
 
 export default {
   getCategory ,
   getAllbusinesslist,
-  getcategorybusinesslist
+  getcategorybusinesslist,
+  businessDeatils
 };

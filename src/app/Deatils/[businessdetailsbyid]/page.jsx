@@ -1,9 +1,10 @@
 "use client"
 
+import GlobalApi from '@/_service/GlobalApi';
 import { signIn, useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
 
-const BusinessDetails = () => {
+const BusinessDetails = ({params}) => {
   const { data, status } = useSession();
 
   useEffect(() => {
@@ -12,6 +13,12 @@ const BusinessDetails = () => {
     }
   }, [status]);
 
+ 
+  useEffect(()=>{
+userAuth();
+  }, [])
+
+const userAuth = ()=>{
   if (status === 'loading') {
     return <p className='mx-6 md:mx-16 font-bold text-4xl ' >Loading...</p>;
   }
@@ -19,6 +26,25 @@ const BusinessDetails = () => {
   if (status === 'unauthenticated') {
    confirm("you must login first")
   }
+
+}
+
+
+
+  useEffect(() => {
+    if (params) {
+      getbusinessbyid()
+    }
+  }, [params]);
+
+
+const getbusinessbyid = ()=>{
+  GlobalApi.businessDeatils(params.businessdeatilsbyid).then((res)=>{
+console.log(res)
+  })
+}
+
+
 
   if (status === 'authenticated') {
     return (
@@ -28,7 +54,7 @@ const BusinessDetails = () => {
     );
   }
 
-  return null; // This line handles unexpected status values
+  return null; 
 };
 
 export default BusinessDetails;

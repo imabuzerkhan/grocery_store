@@ -7,7 +7,7 @@ const Business = ({ businesslists, title }) => {
   return (
     <div className='my-5 mx-6 md:mx-16 ' >
       <h1 className='font-bold text-[22px] ' >{title}</h1>
-       <div className='grid grid-cols-2 md:grid-col-4  ls-4  gap-6 mt-5 ' >
+       <div className='grid grid-cols-2 md:grid-cols-4    gap-6 mt-5 ' >
       {businesslists.map((item, index) => (
     <Link href={'/Deatils/'+ item.id} >   <div key={index} className='shadow-md rounded-lg w-[270px] ' >
           <Image
