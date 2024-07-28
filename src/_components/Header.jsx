@@ -20,7 +20,7 @@ const Header = () => {
 const {data} = useSession();
 
 useEffect(()=>{
-console.log(data)
+// console.log(data)
 },[data])
 
   return (
