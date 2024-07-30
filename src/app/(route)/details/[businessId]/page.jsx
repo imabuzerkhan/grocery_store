@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa'; // Importing icons
 import { Button } from '@/components/ui/button';
 import { Share } from 'next/font/google';
-import { ShareIcon, User } from 'lucide-react';
+import { NotebookPen, ShareIcon, User } from 'lucide-react';
 
 
 const BusinessDetails = ({ params }) => {
@@ -97,8 +97,13 @@ const BusinessDetails = ({ params }) => {
 
 </div>
 </div>
-<div className="sugessted hidden md:block ">
+<div className="sugessted 
 
+ ">
+<Button className="flex gap-2 " >
+  <NotebookPen/>
+  Bokk Appoinment
+</Button>
 </div>
           </div>
           </>
