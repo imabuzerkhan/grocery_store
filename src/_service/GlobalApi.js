@@ -70,11 +70,32 @@ return result;
 };
 
 
+const  getbusinessbyid= async (id) =>{
+  const query = ggl `query MyQuery {
+  businesslists(where: {id: "`+id+`"}) {
+    about
+    address
+    category {
+      name
+    }
+    contactPerson
+    gmail
+    id
+    image {
+      url
+    }
+  }
+}`
 
+const result = await request(Master_url, query);
+return result;
+
+}
 
 export default {
   getCategory ,
   getAllbusinesslist,
+  getbusinessbyid,
   getAllbusinesslist
  
 };
