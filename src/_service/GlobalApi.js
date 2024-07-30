@@ -71,7 +71,7 @@ return result;
 
 
 const  getbusinessbyid= async (id) =>{
-  const query = ggl `query MyQuery {
+  const query = gql `query MyQuery {
   businesslists(where: {id: "`+id+`"}) {
     about
     address

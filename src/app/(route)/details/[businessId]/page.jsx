@@ -1,13 +1,20 @@
 "use client"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { signIn, useSession } from 'next-auth/react'
 import React from 'react'
+import GlobalApi from '@/_service/GlobalApi'
 
-const businessDetails = () => {
+const businessDetails = ({params}) => {
 
 
   const {data , status} = useSession();
+const [business , Setbusiness] = useState([])
 
+useEffect(()=>{
+  auth();
+}, [])
+
+const auth = ()=>{
   if(status=='loading'){
     return <p>Loading...</p>
 
@@ -16,10 +23,23 @@ const businessDetails = () => {
   if (status=='unauthenticated'){
     signIn('descope')
   }
+}
+
+
+ 
 
 
 
+useEffect(()=>{
+  params&&getbusinessbyid();
+}, [params])
 
+
+const getbusinessbyid = ()=>{
+GlobalApi.getbusinessbyid(params.businessId).then((res)=>{
+ console.log(res.businesslists)
+})
+}
 
 
 
@@ -31,7 +51,15 @@ const businessDetails = () => {
 
   return  status=='authenticated'&&  (
     <div>
-      Businesslist
+    {
+      data.map((item )=>{
+        <div key={item.id} >
+
+
+          
+        </div>
+      })
+    }
     </div>
   )
 }
