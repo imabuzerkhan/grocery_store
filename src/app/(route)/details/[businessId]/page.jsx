@@ -8,6 +8,7 @@ import { FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa'; // Importing icons
 import { Button } from '@/components/ui/button';
 import { Share } from 'next/font/google';
 import { NotebookPen, ShareIcon, User } from 'lucide-react';
+import Booking from './_components/Booking';
 
 
 const BusinessDetails = ({ params }) => {
@@ -97,13 +98,13 @@ const BusinessDetails = ({ params }) => {
 
 </div>
 </div>
-<div className="sugessted 
-
- ">
+<div className="sugessted md:pl-8">
+<Booking>
 <Button className="flex gap-2 " >
   <NotebookPen/>
   Bokk Appoinment
 </Button>
+</Booking>
 </div>
           </div>
           </>
