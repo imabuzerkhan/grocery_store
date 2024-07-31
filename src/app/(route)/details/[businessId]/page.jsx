@@ -99,7 +99,7 @@ const BusinessDetails = ({ params }) => {
 </div>
 </div>
 <div className="sugessted md:pl-8">
-<Booking>
+<Booking business={business} >
 <Button className="flex gap-2 " >
   <NotebookPen/>
   Bokk Appoinment
