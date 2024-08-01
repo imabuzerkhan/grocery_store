@@ -97,7 +97,7 @@ return result;
 
 
 // new mutation
-const createNewBooking= async (businessId , data , time , userEmail , userName )=>{
+const createNewBooking= async (businessId , date , time , userEmail , userName )=>{
   const mutationQuery= gql`
   mutation CreateBooking {
   createBooking(

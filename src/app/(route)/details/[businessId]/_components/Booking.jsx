@@ -17,7 +17,8 @@ import moment from 'moment';
 import { useSession } from 'next-auth/react';
 
 const Booking = ({ children, business }) => {
-  const { data: sessionData } = useSession(); // Correctly get session data
+  console.log(business)
+  const { data: sessionData, status } = useSession(); // Correctly get session data and status
   const [date, setDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState();
   const [timeSlot, setTimeSlot] = useState([]);
@@ -26,6 +27,12 @@ const Booking = ({ children, business }) => {
   useEffect(() => {
     getTime();
   }, []);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      savingBooking();
+    }
+  }, [status]); // Ensure savingBooking runs when sessionData is authenticated
 
   const getTime = () => {
     const timeList = [];
@@ -37,40 +44,45 @@ const Booking = ({ children, business }) => {
       timeList.push({ time: i + ':00 PM' });
       timeList.push({ time: i + ':30 PM' });
     }
-
     setTimeSlot(timeList);
   };
 
-  useEffect(() => {
-    if (sessionData) {
-      savingBooking();
+  const savingBooking = async () => {
+    if (!sessionData?.user) {
+      toast('User not logged in');
+      return;
     }
-  }, [sessionData]); // Make sure savingBooking runs when sessionData is available
 
-  const savingBooking = () => {
-    GlobalApi.createNewBooking(
-      business.id,
-      moment(date).format('DD-MMM-yyyy'),
-      selectedTime,
-      sessionData?.user?.email,
-      sessionData?.user?.name
-    )
-      .then(resp => {
-        console.log(resp);
-        if (resp) {
-          setDate(new Date()); // Reset the date to current date
-          setSelectedTime('');
-          toast('Service Booked successfully!');
-        }
-      })
-      .catch(e => {
-        toast('Error while creating booking');
-      });
+    try {
+      const response = await GlobalApi.createNewBooking(
+        
+        business.id,
+        moment(date).format('DD-MMM-yyyy'),
+        selectedTime,
+        sessionData.user.email,
+        sessionData.user.name
+      );
+      console.log(response);
+      if (response) {
+        setDate(new Date()); // Reset the date to current date
+        setSelectedTime('');
+        toast('Service Booked successfully!');
+      }
+    } catch (e) {
+      console.error(e);
+      toast('Error while creating booking');
+    }
   };
 
   const isSlotBooked = (time) => {
     return bookedSlot.find(item => item.time === time);
   };
+
+  // if (!business || !business.id) {
+  //   console.error('Invalid business data:', business);
+  //   toast('Invalid business data');
+  //   return;
+  // }
 
   return (
     <div>
