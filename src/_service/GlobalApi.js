@@ -97,25 +97,49 @@ return result;
 
 
 // new mutation
-const createNewBooking= async (businessId , date , time , userEmail , userName )=>{
-  const mutationQuery= gql`
+const createNewBooking=async(businessId,date,time,userEmail,userName)=>{
+  const mutationQuery=gql`
   mutation CreateBooking {
-  createBooking(
-    data: {bookingStatus: booked, businesslist: {connect: {id: "`+businessId+`"}}, date: "`+date+`", time: "`+time+`", userEmail: "`+userEmail+`", userName: "`+userName+`"}
-  ) {
-    id
+    createBooking(
+      data: {bookingStatus: Booked, 
+        businessList: {connect: {id: "`+businessId+`"}},
+         date: "`+date+`", time: "`+time+`", 
+         userEmail: "`+userEmail+`",1333547
+         54
+          userName: "`+userName+`"}
+    ) {
+      id
+    }
+    publishManyBookings(to: PUBLISHED) {
+      count
+    }
   }
-}`
-
-const result = await request(Master_url,mutationQuery);
-return result;
+  `
+  const result=await request(Master_url,mutationQuery)
+  return result;
 }
+
+// const BusinessBookedSlot=async(businessId,date)=>{
+//   const query=gql`
+//   query BusinessBookedSlot {
+//     bookings(where: {businessList: 
+//       {id: "`+businessId+`"}, date: "`+date+`"}) {
+//       date
+//       time
+//     }
+//   }
+//   `
+//   const result= await request(Master_url,query)
+//   return result;
+// }
+
 
 export default {
   getCategory ,
   getAllbusinesslist,
   getbusinessbyid,
   getAllbusinesslist,
-  createNewBooking
+  createNewBooking,
+
  
 };
